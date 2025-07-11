@@ -1,0 +1,63 @@
+<html>
+<head>
+    <title>Compare Two Genomes</title>
+    <style>
+        body {
+            background-color: #e6f9ec;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 40px;
+        }
+        h1 {
+            color: #2d5d3f;
+        }
+        select {
+            font-size: 16px;
+            padding: 8px;
+            margin: 10px;
+        }
+        input[type="submit"] {
+            background-color: #b2dfdb;
+            color: #004d40;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #80cbc4;
+        }
+        .nav-link {
+            display: block;
+            margin-top: 30px;
+            color: #004d40;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Compare Two Genomes</h1>
+
+    <form action="/compare/results" method="post">
+        <p>Select first genome:</p>
+        <select name="id1">
+            {% for genome in genomes %}
+                <option value="{{ genome.id }}">{{ genome.id }}</option>
+            {% endfor %}
+        </select>
+
+        <p>Select second genome:</p>
+        <select name="id2">
+            {% for genome in genomes %}
+                <option value="{{ genome.id }}">{{ genome.id }}</option>
+            {% endfor %}
+        </select>
+
+        <br><br>
+        <input type="submit" value="Compare" />
+    </form>
+
+    <a href="/menu" class="nav-link">⬅ Back to Menu</a>
+</body>
+</html>

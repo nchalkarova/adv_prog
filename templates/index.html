@@ -1,0 +1,35 @@
+<html>
+<head>
+    <title>Mito Analysis App</title>
+    <style>
+        body {
+            background-color: #e6f9ec;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 60px;
+        }
+        h1 {
+            color: #2d5d3f;
+        }
+        .upload-form {
+            margin-top: 40px;
+        }
+        input[type="file"], input[type="submit"] {
+            font-size: 16px;
+            padding: 10px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the website created for <br><em>Advanced Programming Course 2024–2025</em></h1>
+
+    <div class="upload-form">
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="fasta" required />
+            <br>
+            <input type="submit" value="Upload FASTA File" />
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<html>
+<head>
+    <title>FASTA Summary</title>
+    <style>
+        body {
+            background-color: #e6f9ec;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 40px;
+        }
+        h1 {
+            color: #2d5d3f;
+        }
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #ffffff;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px 12px;
+        }
+        th {
+            background-color: #a8e6cf;
+        }
+        .nav-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 20px;
+            background-color: #b2dfdb;
+            color: #004d40;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+        .nav-link:hover {
+            background-color: #80cbc4;
+        }
+    </style>
+</head>
+<body>
+    <h1>FASTA Summary</h1>
+
+    <table>
+        <tr>
+            <th>id</th>
+            <th>description</th>
+            <th>length</th>
+            <th>GC content (%)</th>
+        </tr>
+        {% for row in rows %}
+        <tr>
+            <td>{{ row.id }}</td>
+            <td>{{ row.description }}</td>
+            <td>{{ row.seq|length }}</td>
+            <td>{{ "%.2f"|format((row.seq.count('G') + row.seq.count('C')) / row.seq|length * 100) }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a href="/menu" class="nav-link">⬅ Back to Menu</a>
+</body>
+</html>

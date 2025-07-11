@@ -1,0 +1,91 @@
+<html>
+<head>
+    <title>Motif Finder</title>
+    <style>
+        body {
+            background-color: #e6f9ec;
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            color: #2d5d3f;
+            text-align: center;
+        }
+        h1, h2 {
+            color: #2d5d3f;
+            margin-bottom: 20px;
+        }
+        img {
+            max-width: 90%;
+            height: auto;
+            border: 3px solid #b2dfdb;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        table {
+            margin: 0 auto 30px auto;
+            border-collapse: collapse;
+            width: 90%;
+            max-width: 900px;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            font-size: 16px;
+        }
+        th, td {
+            border: 1px solid #b2dfdb;
+            padding: 12px 15px;
+            color: #2d5d3f;
+        }
+        th {
+            background-color: #b2dfdb;
+            color: #004d40;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #004d40;
+            font-weight: bold;
+            font-size: 16px;
+            border: 2px solid #b2dfdb;
+            padding: 10px 20px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+        }
+        a:hover {
+            background-color: #80cbc4;
+            color: #00251a;
+        }
+    </style>
+</head>
+<body>
+    <h1>Motif Conservation Heatmap</h1>
+
+    <img src="/uploads/{{ heatmap_img }}" alt="Motif Conservation Heatmap" />
+
+    <h2>Motif Occurrence Counts</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Motif</th>
+                {% for genome in genomes %}
+                    <th>{{ genome.id }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for motif, row in motifs %}
+            <tr>
+                <td>{{ motif }}</td>
+                {% for count in row %}
+                    <td>{{ count }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="/motifs">⬅ Try different motifs</a>
+</body>
+</html>
